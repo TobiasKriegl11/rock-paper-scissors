@@ -27,3 +27,11 @@ function getHumanChoice () {
     prompt("Please enter your choice: ", "Rock, Paper, or Scissors");
 }
 getHumanChoice()
+
+
+/*Create variable humanScore
+Create variable computerScore
+Initialize those variables with the value 0*/
+
+let humanScore = 0;
+let computerScore = 0;
