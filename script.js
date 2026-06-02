@@ -24,7 +24,6 @@ Store user input in a variable called userInput
 Return userInput */
 
 function getHumanChoice () {
-    let userInput = prompt("Please enter your choice: ", "Rock, Paper, or Scissors")
-    return userInput
+    prompt("Please enter your choice: ", "Rock, Paper, or Scissors");
 }
 getHumanChoice()
