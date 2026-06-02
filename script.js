@@ -24,7 +24,9 @@ Store user input in a variable called userInput
 Return userInput */
 
 function getHumanChoice () {
-    prompt("Please enter your choice: ", "Rock, Paper, or Scissors");
+    let userInput = prompt("Please enter your choice: ", "Rock, Paper, or Scissors");
+    if (userInput === null) return "";
+    return userInput.toLowerCase();
 }
 getHumanChoice()
 
@@ -35,3 +37,17 @@ Initialize those variables with the value 0*/
 
 let humanScore = 0;
 let computerScore = 0;
+
+
+/*Create a new function named playRound
+Define parameters for playRound: humanChoice and computerChoice
+Use these two parameters to take the human and computer choices as arguments*/
+
+function playRound (humanChoice, computerChoice) {
+    // my code belongs here
+}
+
+const humanSelection = getHumanChoice();
+const computerSelection = getComputerChoice();
+
+playRound(humanSelection, computerSelection);
