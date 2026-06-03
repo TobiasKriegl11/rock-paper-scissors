@@ -22,7 +22,7 @@ The project is built using JavaScript:
 ## How to Play
 
 1. Open the project in any web browser.
-2. Open your browser's Developer Tools and look at the **Consol** tab.
+2. Open your browser's Developer Tools and look at the **Console** tab.
 3. Call the function by typing `playGame();` if it isn't automatically called.
 4. Respond to the pop-up prompts for 5 rounds and watch the tournament unfold in the console!
 
