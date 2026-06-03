@@ -9,11 +9,11 @@ function getComputerChoice () {
     let randomNumber = Math.floor(Math.random() * 3) + 1;
 
     if (randomNumber === 1) {
-        return ("Rock");
+        return ("rock");
     } else if (randomNumber === 2) {
-        return ("Paper");
+        return ("paper");
     } else {
-        return ("Scissors");
+        return ("scissors");
     }
 }
 
@@ -21,14 +21,14 @@ function getComputerChoice () {
 /*Create a function named getHumanChoice
 Get user input with the prompt method
 Store user input in a variable called userInput
-Return userInput */
+If user input is not given return ""
+Return the userInput in LowerCase */
 
 function getHumanChoice () {
-    let userInput = prompt("Please enter your choice: ", "Rock, Paper, or Scissors");
+    let userInput = prompt("Please enter your choice: ");
     if (userInput === null) return "";
     return userInput.toLowerCase();
 }
-getHumanChoice()
 
 
 /*Create variable humanScore
@@ -43,8 +43,43 @@ let computerScore = 0;
 Define parameters for playRound: humanChoice and computerChoice
 Use these two parameters to take the human and computer choices as arguments*/
 
+/*
+FUNCTION playRound(humanChoice, computerChoice)
+
+    Step 1: Capitalize the inputs for formatting
+    SET capitalizedHumanChoice = MAKE first letter of humanChoice uppercase
+    SET capitalizedComputerChoice = MAKE first letter of computerChoice uppercase
+
+    Step 2: Game Logic
+    IF humanChoice is equal to computerChoice THEN
+        PRINT "It's a tie!" + capitalizedHumanChoice draws computerChoice
+        
+    ELSE IF humanChoice beats computerChoice THEN
+        PRINT "You win! " + capitalizedHumanChoice + " beats " + computerChoice
+        
+    ELSE
+        PRINT "You lose! " + capitalizedComputerChoice + " beats " + humanChoice
+    END IF
+END FUNCTION*/
+
 function playRound (humanChoice, computerChoice) {
-    // my code belongs here
+
+    let capitalizedHumanChoice = humanChoice.slice(0, 1).toUpperCase() + humanChoice.slice(1);
+    let capitalizedComputerChoice = computerChoice.slice(0, 1).toUpperCase() + computerChoice.slice(1);
+
+    if (humanChoice === computerChoice) {
+        console.log("It's a tie! " + capitalizedHumanChoice + " draws " + computerChoice + ".");
+    } else if (humanChoice === "rock" && computerChoice === "scissors" 
+          || humanChoice === "paper" && computerChoice === "rock" 
+          || humanChoice === "scissors" && computerChoice === "paper") {
+        console.log("You win! " + capitalizedHumanChoice + " beats " + computerChoice + ".");       
+    } else if (humanChoice === "rock" && computerChoice === "paper"
+          || humanChoice === "paper" && computerChoice === "scissors"
+          || humanChoice === "scissors" && computerChoice === "rock") {
+        console.log("You lose! " + capitalizetComputerChoice + " beats " + humanChoice + ".");
+    } else {
+        console.log("Invalid entry. Please enter your choice again and check for typos.")
+    }
 }
 
 const humanSelection = getHumanChoice();
