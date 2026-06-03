@@ -35,54 +35,153 @@ function getHumanChoice () {
 Create variable computerScore
 Initialize those variables with the value 0*/
 
-let humanScore = 0;
-let computerScore = 0;
-
-
 /*Create a new function named playRound
 Define parameters for playRound: humanChoice and computerChoice
 Use these two parameters to take the human and computer choices as arguments*/
 
 /*
-FUNCTION playRound(humanChoice, computerChoice)
+*/
 
-    Step 1: Capitalize the inputs for formatting
-    SET capitalizedHumanChoice = MAKE first letter of humanChoice uppercase
-    SET capitalizedComputerChoice = MAKE first letter of computerChoice uppercase
+/*FUNCTION playGame()
+    Phase 1: Setup
+    SET humanScore = 0
+    SET computerScore = 0
 
-    Step 2: Game Logic
-    IF humanChoice is equal to computerChoice THEN
-        PRINT "It's a tie!" + capitalizedHumanChoice draws computerChoice
+    Phase 2: Round Logic
+    FUNCTION playRound(humanChoice, computerChoice)
+
+        Step 1: Capitalize the inputs for formatting
+        SET capitalizedHumanChoice = MAKE first letter of humanChoice uppercase
+        SET capitalizedComputerChoice = MAKE first letter of computerChoice uppercase
+
+        Step 2: Game Logic
+        IF humanChoice is equal to computerChoice THEN
+            PRINT "It's a tie!" + capitalizedHumanChoice draws computerChoice
         
-    ELSE IF humanChoice beats computerChoice THEN
-        PRINT "You win! " + capitalizedHumanChoice + " beats " + computerChoice
-        
+        ELSE IF humanChoice beats computerChoice THEN
+            PRINT "You win! " + capitalizedHumanChoice + " beats " + computerChoice
+        ELSE
+            PRINT "You lose! " + capitalizedComputerChoice + " beats " + humanChoice
+        END IF
+    END FUNCTION
+        IF human wins THEN 
+            RETURN "human"
+        ELSE IF computer wins THEN 
+            RETURN "computer"
+        ELSE 
+            RETURN "tie"
+    END FUNCTION
+    
+    Phase 3: The 5 Rounds
+    ROUND 1
+    SET humanSelection = getHumanChoice()
+    SET computerSelection = getComputerChoice()
+    SET roundWinner = playRound(humanSelection, computerSelection)
+    
+    IF roundWinner is "human" THEN increase humanScore by 1
+    ELSE IF roundWinner is "computer" THEN increase computerScore by 1
+
+    // ROUNDS 2, 3, 4, 5
+    Repeat the exact same steps as ROUND 1 four more times
+    
+    // Phase 4: Declaring the Champion
+    IF humanScore > computerScore THEN
+        PRINT "You won the game! Final score: " + humanScore + " to " + computerScore
+    ELSE IF computerScore > humanScore THEN
+        PRINT "You lost the game! Final score: " + humanScore + " to " + computerScore
     ELSE
-        PRINT "You lose! " + capitalizedComputerChoice + " beats " + humanChoice
+        PRINT "The game ends in a tie! Final score: " + humanScore + " to " + computerScore
     END IF
-END FUNCTION*/
 
-function playRound (humanChoice, computerChoice) {
+END FUNCTION
+*/
 
-    let capitalizedHumanChoice = humanChoice.slice(0, 1).toUpperCase() + humanChoice.slice(1);
-    let capitalizedComputerChoice = computerChoice.slice(0, 1).toUpperCase() + computerChoice.slice(1);
+function playGame () {
 
-    if (humanChoice === computerChoice) {
-        console.log("It's a tie! " + capitalizedHumanChoice + " draws " + computerChoice + ".");
-    } else if (humanChoice === "rock" && computerChoice === "scissors" 
-          || humanChoice === "paper" && computerChoice === "rock" 
-          || humanChoice === "scissors" && computerChoice === "paper") {
-        console.log("You win! " + capitalizedHumanChoice + " beats " + computerChoice + ".");       
-    } else if (humanChoice === "rock" && computerChoice === "paper"
-          || humanChoice === "paper" && computerChoice === "scissors"
-          || humanChoice === "scissors" && computerChoice === "rock") {
-        console.log("You lose! " + capitalizetComputerChoice + " beats " + humanChoice + ".");
-    } else {
-        console.log("Invalid entry. Please enter your choice again and check for typos.")
+    let humanScore = 0;
+    let computerScore = 0;
+
+    function playRound (humanChoice, computerChoice) {
+
+        let capitalizedHumanChoice = humanChoice.slice(0, 1).toUpperCase() + humanChoice.slice(1);
+        let capitalizedComputerChoice = computerChoice.slice(0, 1).toUpperCase() + computerChoice.slice(1);
+
+        if (humanChoice === computerChoice) {
+            console.log("It's a tie! " + capitalizedHumanChoice + " draws " + computerChoice + ".");
+            return "tie";
+         } else if (humanChoice === "rock" && computerChoice === "scissors" 
+            || humanChoice === "paper" && computerChoice === "rock" 
+            || humanChoice === "scissors" && computerChoice === "paper") {
+          console.log("You win! " + capitalizedHumanChoice + " beats " + computerChoice + "."); 
+          return "human";      
+        } else if (humanChoice === "rock" && computerChoice === "paper"
+            || humanChoice === "paper" && computerChoice === "scissors"
+            || humanChoice === "scissors" && computerChoice === "rock") {
+          console.log("You lose! " + capitalizedComputerChoice + " beats " + humanChoice + ".");
+          return "computer"
+        } else {
+          console.log("Invalid entry. Please enter your choice again and check for typos.")
+          return "invalid";
+        }
     }
+
+    let humanSelection = getHumanChoice();
+    let computerSelection = getComputerChoice();
+    let winner = playRound(humanSelection, computerSelection);
+
+    if (winner === "human") {
+        humanScore++;
+    } else if (winner === "computer") {
+        computerScore++;
+    }
+
+    humanSelection = getHumanChoice();
+    computerSelection = getComputerChoice();
+    winner = playRound(humanSelection, computerSelection);
+
+    if (winner === "human") {
+        humanScore++;
+    } else if (winner === "computer") {
+        computerScore++;
+    }
+
+    humanSelection = getHumanChoice();
+    computerSelection = getComputerChoice();
+    winner = playRound(humanSelection, computerSelection);
+
+    if (winner === "human") {
+        humanScore++;
+    } else if (winner === "computer") {
+        computerScore++;
+    }
+
+    humanSelection = getHumanChoice();
+    computerSelection = getComputerChoice();
+    winner = playRound(humanSelection, computerSelection);
+
+    if (winner === "human") {
+        humanScore++;
+    } else if (winner === "computer") {
+        computerScore++;
+    }
+
+    humanSelection = getHumanChoice();
+    computerSelection = getComputerChoice();
+    winner = playRound(humanSelection, computerSelection);
+
+    if (winner === "human") {
+        humanScore++;
+    } else if (winner === "computer") {
+        computerScore++;
+    }
+
+    if (humanScore > computerScore) {
+        console.log("You won the game! Final score: " + humanScore + " to " + computerScore)
+    } else if (computerScore > humanScore) {
+        console.log("You lost the game! Final score: " + humanScore + " to " + computerScore)
+    } else {
+        console.log("The game ends in a tie! Final score: " + humanScore + " to " + computerScore)
+    }
+    
 }
-
-const humanSelection = getHumanChoice();
-const computerSelection = getComputerChoice();
-
-playRound(humanSelection, computerSelection);
+playGame();
