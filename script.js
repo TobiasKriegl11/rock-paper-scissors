@@ -125,54 +125,17 @@ function playGame () {
         }
     }
 
-    let humanSelection = getHumanChoice();
-    let computerSelection = getComputerChoice();
-    let winner = playRound(humanSelection, computerSelection);
+    for (let i = 0; i < 5; i++) {
 
-    if (winner === "human") {
-        humanScore++;
-    } else if (winner === "computer") {
-        computerScore++;
-    }
+        let humanSelection = getHumanChoice();
+        let computerSelection = getComputerChoice();
+        let winner = playRound(humanSelection, computerSelection);
 
-    humanSelection = getHumanChoice();
-    computerSelection = getComputerChoice();
-    winner = playRound(humanSelection, computerSelection);
-
-    if (winner === "human") {
-        humanScore++;
-    } else if (winner === "computer") {
-        computerScore++;
-    }
-
-    humanSelection = getHumanChoice();
-    computerSelection = getComputerChoice();
-    winner = playRound(humanSelection, computerSelection);
-
-    if (winner === "human") {
-        humanScore++;
-    } else if (winner === "computer") {
-        computerScore++;
-    }
-
-    humanSelection = getHumanChoice();
-    computerSelection = getComputerChoice();
-    winner = playRound(humanSelection, computerSelection);
-
-    if (winner === "human") {
-        humanScore++;
-    } else if (winner === "computer") {
-        computerScore++;
-    }
-
-    humanSelection = getHumanChoice();
-    computerSelection = getComputerChoice();
-    winner = playRound(humanSelection, computerSelection);
-
-    if (winner === "human") {
-        humanScore++;
-    } else if (winner === "computer") {
-        computerScore++;
+        if (winner === "human") {
+            humanScore++;
+        } else if (winner === "computer") {
+            computerScore++;
+        }
     }
 
     if (humanScore > computerScore) {
