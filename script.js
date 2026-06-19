@@ -50,6 +50,9 @@ function playGame(playerChoice) {
 }
 
 function checkWinner() {
+    if (humanScore === 5 && computerScore === 5) {
+        checkWinnerDiv.textContent = "The game ends in a tie!"
+    };
     if (humanScore === 5) {
         checkWinnerDiv.textContent = "You won! Computer lost!"; setButtonsDisabled(true);
     };
